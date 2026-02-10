@@ -241,18 +241,14 @@ export const LoginModal = ({ onClose, onLoginSuccess }: LoginModalProps) => {
                         {isRegistering ? 'Đã có tài khoản?' : 'Chưa có tài khoản?'}
                         <button 
                             onClick={() => { 
-                                if (isRegistering) {
-                                    setIsRegistering(false); 
-                                    setError(''); 
-                                    setSuccessMsg(''); 
-                                    setInfoMsg(''); 
-                                } else {
-                                    alert("Hệ thống đang tạm khóa chức năng đăng ký. Vui lòng liên hệ Giáo viên để được cấp tài khoản.");
-                                }
+                                setIsRegistering(!isRegistering); 
+                                setError(''); 
+                                setSuccessMsg(''); 
+                                setInfoMsg(''); 
                             }}
-                            className={`ml-1 font-bold hover:underline ${role === 'teacher' ? 'text-emerald-600' : 'text-blue-600'} ${!isRegistering ? 'opacity-60 cursor-not-allowed' : ''}`}
+                            className={`ml-1 font-bold hover:underline ${role === 'teacher' ? 'text-emerald-600' : 'text-blue-600'}`}
                         >
-                            {isRegistering ? 'Đăng nhập ngay' : 'Đăng ký (Đang khóa)'}
+                            {isRegistering ? 'Đăng nhập ngay' : 'Đăng ký'}
                         </button>
                     </p>
                     <button onClick={onClose} className="text-gray-400 hover:text-gray-600 text-xs font-bold transition-colors">
